@@ -1,0 +1,9 @@
+**/.DS_Store
+.vscode/
+.env.local
+.run.local
+**/*service-account.json
+/jwt/*.pem
+/pkg
+.idea
+.local

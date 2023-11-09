@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+    graph-ql-api:
+        build: .
+        container_name: graph-ql-api
+        working_dir: /
+        volumes:
+            - ./service-account.json:/secrets/google/google-credentials.json
+            - ./jwt:/secrets/jwt
+        env_file:
+            - .env.local
+        ports:
+            - "8423:80"
+        networks:
+            - default
+            - acl-api_acl-net
+
+    mysql:
+        image: mysql:8.0
+        container_name: graph-ql-api-mysql
+        command: --default-authentication-plugin=mysql_native_password
+        restart: always
+        environment:
+            - MYSQL_ROOT_PASSWORD=rootpassword
+            - MYSQL_DATABASE=graph-ql-api
+            - MYSQL_USER=graph-ql-api-user
+            - MYSQL_PASSWORD=graph-ql-api-password
+        ports:
+            - "8424:3306"
+        volumes:
+            - mysql:/var/lib/mysql
+volumes:
+    mysql: # Mysql persistent volume should you need one
+
+networks:
+    graph-ql-api-net:
+        driver: bridge
+    acl-api_acl-net:
+        external: true
