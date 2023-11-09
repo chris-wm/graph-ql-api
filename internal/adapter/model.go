@@ -114,12 +114,12 @@ func getDbDsn() string {
 	// Get MySQL envs
 	user := os.Getenv("MYSQL_USER")
 	if user == "" {
-		user = "root"
+		user = "graph-ql-api-user"
 	}
 
 	password := os.Getenv("MYSQL_PASSWORD")
 	if password == "" {
-		password = "root"
+		password = "graph-ql-api-password"
 	}
 
 	host := os.Getenv("MYSQL_HOST")
@@ -129,12 +129,12 @@ func getDbDsn() string {
 
 	port := os.Getenv("MYSQL_PORT")
 	if port == "" {
-		port = "3306"
+		port = "8424"
 	}
 
 	database := os.Getenv("MYSQL_DATABASE")
 	if database == "" {
-		database = "app"
+		database = "graph-ql-api"
 	}
 
 	return dsn + user + ":" + password + "@tcp(" + host + ":" + port + ")" + "/" + database + "?charset=utf8mb4&parseTime=True&loc=Local"

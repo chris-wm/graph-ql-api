@@ -5,9 +5,6 @@ services:
         build: .
         container_name: graph-ql-api
         working_dir: /
-        volumes:
-            - ./service-account.json:/secrets/google/google-credentials.json
-            - ./jwt:/secrets/jwt
         env_file:
             - .env.local
         ports:

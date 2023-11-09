@@ -3,8 +3,8 @@ package main
 import (
 	logging "github.com/electivetechnology/utility-library-go/logger"
 	"github.com/electivetechnology/utility-library-go/router"
+	"gitlab.et-ns.net/connect/graph-ql-api/internal/adapter"
 	_ "gitlab.et-ns.net/connect/graph-ql-api/internal/controllers/status"
-	"gitlab.et-ns.net/connect/graph-ql-api/internal/model"
 )
 
 func main() {
@@ -13,9 +13,9 @@ func main() {
 	logger.DebugF("Starting Graph-ql-api App")
 
 	// Run App Migrations
-	model := model.NewModel()
-	model.Connect()
-	model.MigrationsMigrate()
+	adapter := adapter.NewAdapter()
+	adapter.Connect()
+	adapter.MigrationsMigrate()
 
 	// Create and start router
 	logger.DebugF("Creating new  Router")
