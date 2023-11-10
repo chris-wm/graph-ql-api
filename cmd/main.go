@@ -5,6 +5,7 @@ import (
 	"github.com/electivetechnology/utility-library-go/router"
 	"gitlab.et-ns.net/connect/graph-ql-api/internal/adapter"
 	_ "gitlab.et-ns.net/connect/graph-ql-api/internal/controllers/status"
+	_ "gitlab.et-ns.net/connect/graph-ql-api/internal/migrations"
 )
 
 func main() {

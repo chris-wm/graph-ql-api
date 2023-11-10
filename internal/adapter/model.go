@@ -46,7 +46,7 @@ func RegisterMigration(f func(db *gorm.DB)) {
 }
 
 func (a *Adapter) MigrationsMigrate() {
-	a.Logger.Printf("Running db migartions")
+	a.Logger.Printf("Running db migrations")
 
 	// Check if connected to db
 	if a.IsConnected {
