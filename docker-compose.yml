@@ -13,6 +13,13 @@ services:
             - default
             - acl-api_acl-net
 
+    redis:
+        image: redis:alpine
+        container_name: graph-ql-api-redis
+        restart: always
+        ports:
+            - "8143:6379"
+
     mysql:
         image: mysql:8.0
         container_name: graph-ql-api-mysql
@@ -27,6 +34,19 @@ services:
             - "8424:3306"
         volumes:
             - mysql:/var/lib/mysql
+
+    mysql-test:
+        image: mysql:8.0
+        container_name: graph-ql-api-mysql-test
+        command: --default-authentication-plugin=mysql_native_password
+        restart: always
+        environment:
+            - MYSQL_ROOT_PASSWORD=rootpassword
+            - MYSQL_DATABASE=graph-ql-api-test
+            - MYSQL_USER=graph-ql-api-user
+            - MYSQL_PASSWORD=graph-ql-api-password
+        ports:
+            - "8442:3306"
 volumes:
     mysql: # Mysql persistent volume should you need one
 

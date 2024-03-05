@@ -26,6 +26,7 @@ func MigrationUp(db *gorm.DB) {
 	log.Printf("Current Migration: %v", versions)
 
 	MigrateUp1(db, versions)
+	MigrateUp20210924104500(db, versions)
 
 	log.Printf("Finished MigrationUp")
 }
@@ -34,6 +35,7 @@ func MigrationDown(db *gorm.DB) {
 	log.Printf("Starting MigrationDown")
 
 	MigrateDown1(db)
+	MigrateDown20210924104500(db)
 
 	log.Printf("Finished MigrationDown")
 }

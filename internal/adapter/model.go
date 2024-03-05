@@ -46,7 +46,7 @@ func RegisterMigration(f func(db *gorm.DB)) {
 }
 
 func (a *Adapter) MigrationsMigrate() {
-	a.Logger.Printf("Running db migrations")
+	a.Logger.Printf("Running db migartions")
 
 	// Check if connected to db
 	if a.IsConnected {
@@ -114,12 +114,12 @@ func getDbDsn() string {
 	// Get MySQL envs
 	user := os.Getenv("MYSQL_USER")
 	if user == "" {
-		user = "graph-ql-api-user"
+		user = "root"
 	}
 
 	password := os.Getenv("MYSQL_PASSWORD")
 	if password == "" {
-		password = "graph-ql-api-password"
+		password = "root"
 	}
 
 	host := os.Getenv("MYSQL_HOST")
@@ -129,12 +129,12 @@ func getDbDsn() string {
 
 	port := os.Getenv("MYSQL_PORT")
 	if port == "" {
-		port = "8424"
+		port = "3306"
 	}
 
 	database := os.Getenv("MYSQL_DATABASE")
 	if database == "" {
-		database = "graph-ql-api"
+		database = "app"
 	}
 
 	return dsn + user + ":" + password + "@tcp(" + host + ":" + port + ")" + "/" + database + "?charset=utf8mb4&parseTime=True&loc=Local"

@@ -1,4 +1,4 @@
-FROM golang:alpine as builder
+FROM eu.gcr.io/connect-f7e5b/elective/golang:alpine as builder
 
 WORKDIR /graph-ql-api
 
@@ -18,7 +18,7 @@ CMD ["/graph-ql-api/graph-ql-api"]
 #  container will always have a $GOPATH of /go/. However, we can reduce the total
 #  image size to <9mb, and the $GOPATH of the golang:alpine image seems consistent
 #  between versions.
-FROM golang:alpine
+FROM eu.gcr.io/connect-f7e5b/elective/alpine:latest
 
 WORKDIR /
 COPY --from=builder /graph-ql-api/graph-ql-api /graph-ql-api

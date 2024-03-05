@@ -30,9 +30,16 @@ func GetRoutes() []router.Route {
 	// HEAD /v2/status
 	statusHead := router.Route{}
 	statusHead.Method = []string{"HEAD"}
-	statusHead.Path = "/status"
+	statusHead.Path = "/v2/status"
 	statusHead.Handler = router.NoContent
 	routes = append(routes, statusHead)
+
+	// GET /v2/status
+	statusV2 := router.Route{}
+	statusV2.Method = []string{"GET"}
+	statusV2.Path = "/v2/status"
+	statusV2.Handler = Get
+	routes = append(routes, statusV2)
 
 	return routes
 }
